@@ -8,3 +8,4 @@ httpx==0.25.2
 python-dotenv==1.0.1
 pydantic[email]==2.7.1
 pydantic-settings==2.2.1
+Pillow==10.2.0
