@@ -3,19 +3,23 @@ from typing import List
 
 
 class Settings(BaseSettings):
-    SUPABASE_URL: str = ""
-    SUPABASE_ANON_KEY: str = ""
-    SUPABASE_SERVICE_ROLE_KEY: str = ""
+    # ── Supabase ─────────────────────────────────────────
+    SUPABASE_URL: str
+    SUPABASE_ANON_KEY: str
+    SUPABASE_SERVICE_ROLE_KEY: str
 
-    SECRET_KEY: str = "changeme-in-production"
+    # ── JWT Auth ─────────────────────────────────────────
+    SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 10080  # 7 days
 
+    # ── App Info ─────────────────────────────────────────
     APP_NAME: str = "Campus Lost & Found API"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
     ALLOWED_ORIGINS: str = "*"
 
+    # ── Campus Locations ─────────────────────────────────
     CAMPUS_LOCATIONS: List[str] = [
         "Library",
         "Cafeteria",
@@ -34,6 +38,7 @@ class Settings(BaseSettings):
         "Campus Entrance",
     ]
 
+    # ── Item Categories ──────────────────────────────────
     ITEM_CATEGORIES: List[str] = [
         "Electronics",
         "Books & Stationery",
@@ -47,8 +52,11 @@ class Settings(BaseSettings):
         "Other",
     ]
 
+    # ── Pydantic Settings Config ─────────────────────────
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 
+# Global settings instance
 settings = Settings()
